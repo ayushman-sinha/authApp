@@ -5,7 +5,7 @@ import SignUp from './SignUp';
 import Dashboard from './Dashboard';
 const App = () => {
   return (
-    <div>
+    <div className=''>
         <BrowserRouter>
             <Routes>
                 <Route exact path='/login' element={< Login/>}></Route>

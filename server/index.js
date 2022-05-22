@@ -8,7 +8,7 @@ const User=require('./models/user.model');
 const jwt=require('jsonwebtoken');
 app.use(cors());
 app.use(express.json());
-
+//jkhjk
 mongoose.connect('mongodb://localhost:27017/user-contain-data')
 app.post('/api/signup', async (req,res)=>{
     console.log(req.body);

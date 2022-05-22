@@ -7,15 +7,18 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "assert": "^2.0.0",
+    "autoprefixer": "^10.4.7",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "jose": "^4.8.1",
     "jsonwebtoken": "^8.5.1",
+    "postcss": "^8.4.14",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.0.24",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

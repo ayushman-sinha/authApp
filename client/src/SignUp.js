@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   
   const[name,setName]=useState('');
   const[email,setEmail]=useState('');
   const[password,setPassword]=useState('');
-
+  const[category,setcategory]=useState('');
+const navigate=useNavigate()
   async function signUp(e){
     e.preventDefault();
     const response=await fetch('http://localhost:1337/api/signup',{
@@ -17,11 +18,19 @@ const SignUp = () => {
       body:JSON.stringify({
         name,
         email,
-        password
+        password,
+        category
       })
     })
 
-    const data=await response.json();
+    const data = await response.json();
+    if (data.status === "ok") {
+      alert("You are successfully registered");
+      navigate('/login')
+    }
+    else {
+      alert("invalid Cridentials")
+    }
     console.log(data);
   }
   return (
@@ -34,6 +43,12 @@ const SignUp = () => {
         <input value={name} type='text' placeholder='Name' onChange={(e)=>setName(e.target.value)}  className='  px-3 py-2'></input>
         <input value={email} type='email' placeholder='Email' onChange={(e)=>setEmail(e.target.value)}  className=' px-3 py-2 '></input>
         <input value={password} type='password' placeholder='Password' onChange={(e)=>setPassword(e.target.value)}  className=' px-3 py-2'></input>
+        <select name={category} className=' bg-black px-2 w-full py-1 bg-opacity-30 outline-none' onChange={(e)=>setcategory(e.target.value)}  required>
+                <option>--Select--</option>
+                <option value="hrm">HR Manager</option>
+                <option value="hr">HR </option>
+                <option value="emp">Employee</option>
+            </select>
         <input type='submit' value="Sign Up"  className='bg-orange-900 hover:bg-orange-700 px-3 py-2 text-white'></input>
         </form>
       </div>

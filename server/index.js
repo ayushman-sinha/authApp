@@ -16,7 +16,8 @@ app.post('/api/signup', async (req,res)=>{
         await User.create({
             name : req.body.name,
             email: req.body.email,
-            password : req.body.password
+            password : req.body.password,
+            category : req.body.category,
         })
         
         res.json({
@@ -32,11 +33,12 @@ app.post('/api/signup', async (req,res)=>{
 
 app.post('/api/login', async (req,res)=>{
     console.log(req.body);
-    const user=await User.findOne({email : req.body.email, password : req.body.password})
+    const user=await User.findOne({email : req.body.email, password : req.body.password,category:req.body.category})
     if(user){
         const token=jwt.sign({
             name : user.name,
-            email : user.email
+            email: user.email,
+            category:user.category,
         },'topsecret123')
         res.json({ status : 'ok',user : token})
     }

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 const Login = () => {
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('');
+    const[category,setcategory]=useState('');
+    
   
     async function loginUser(e){
       e.preventDefault();
@@ -13,7 +15,8 @@ const Login = () => {
         },
         body:JSON.stringify({         
           email,
-          password
+          password,
+          category,
         })
       })
   
@@ -34,7 +37,7 @@ const Login = () => {
         <div>
           <form onSubmit={loginUser} className="flex flex-col space-y-4"> 
             <div className='form-radio mt-4'>
-              <select name='category' className=' bg-black px-2 w-full py-1 bg-opacity-30 outline-none' required>
+              <select name='category' className=' bg-black px-2 w-full py-1 bg-opacity-30 outline-none' onChange={(e)=>setcategory(e.target.value)}  required>
                 <option>--Select--</option>
                 <option value="hrm">HR Manager</option>
                 <option value="hr">HR </option>

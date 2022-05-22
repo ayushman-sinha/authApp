@@ -25,9 +25,15 @@ const Dashboard = () => {
       populateQuote();
     }
   },[])
+  function logOutUser(e){
+    const token=localStorage.getItem('token');
+    localStorage.clear();
+    navigate('/login');
+  }
   return (
     <div> 
     Logged in Successfully
+    <button type='button' onClick={(e)=>logOutUser()}>Logout</button>
     </div>
   )
 }
